@@ -13,29 +13,61 @@ int Score; //Количество очков сложности
 int Level; //Сложность игры
 int ScorePoint;//Счётчик очков
 
-int Bulls = 0;
-int Cows = 0;
+int Bulls = 0; //Счётчик Быков
+int Cows = 0; //Счётчик Коров
 
 
+// Сравнение на чистое совпадение
+static bool NumberCompare(int * StN, int *Otg)
+{
+    bool sovp = true;
+    for (int i = 0; i < 4; i++)
+    {
+        if (StN[i] != Otg[i])
+        {
+            sovp = false;
+            break;
+        }
+    }
+    return sovp;
+}
+
+// Сравнение заданного и введенного чисел 
+static int BullsAndСows(int *StN, int * Otg)
+{
+    int k = 0;
+    for (int i = 0; i < Level; i++)
+    {
+        for (int j = 0; j < Level; j++)
+        {
+            if (StN[i] == Otg[j])
+            {
+                if (i == j)
+                   Bulls++;
+                else
+                   Cows++;
+                k++;
+            }
+        }
+    }
+    return k;
+}
 
 // Генератор множества Nq не повторяющихся целых чисел в диапазоне от 0 до Nm-1 (RVA)
 static void GenSetN(int Nq, int Nm, int *qN)
 {
-    /*srand(time(0));*/
-    //Random r = new Random();
     int p, k = 0;
     while (k < Nq)
     {
-        //p = r.Next(Nm);
         p = rand() % Nm;
-        bool b = true;
+        bool povtor = true;
         for (int i = 0; i < k; i++)
             if (p == qN[i])
             {
-                b = false;
+                povtor = false;
                 break;
             }
-        if (b)
+        if (povtor)
         {
             qN[k] = p;
             k++;
@@ -43,22 +75,86 @@ static void GenSetN(int Nq, int Nm, int *qN)
     }
 }
 
+
+// ответ пользователя (строка в число)
+static bool Answer(int * Otg)
+{
+    bool bb = true;
+    Bulls = 0;
+    Cows = 0;
+    cout << "Введите Ваше 4-значное число: ";
+    string ss;
+    cin >> ss;
+    // посимвольная разборка
+    for (int i = 0; i < 4; i++)
+    {
+        char c = ss[i];
+        if (isdigit(c))
+        {
+            Otg[i] = c - '0';
+        }
+        else
+        {
+            cout << "Вы ввели НЕ " << Level << "-хзначное число!";
+            bb = false;
+            return bb;
+        }
+    }
+    return bb;
+}
+
+void ProverkaOtveta()
+{
+    while (Counter <= Score)
+    {
+        if (Answer(Otgadka))  // ответ
+            if (NumberCompare(StartNumber, Otgadka))
+            {
+                cout << "Вы угадали число c " << Counter << " попытки!";
+                return;
+            }
+
+        int CountAnswer = BullsAndСows(StartNumber, Otgadka);
+        if (CountAnswer == 0)
+        {
+            cout << "Ход " << Counter << " . В Вашем числе нет загаданных цифр." << endl;
+        }
+        else
+        {
+            cout << "Ход " << Counter << ". Быки = " << Bulls << ", Коровы = " << Cows << "." << endl;
+        }
+        Counter++;
+    }
+}
+
+void Level_Easy()
+{
+    Level = 4;
+    Score = 10;
+    ScorePoint = 10;
+    StartNumber = new int[Level];
+    Otgadka = new int[Level];
+    GenSetN(Level, 10, StartNumber);
+    cout << "Zagadano: ";
+    for (int i = 0; i < Level; i++)
+    {
+        cout << StartNumber[i];
+    }
+    cout << endl << endl;
+
+
+    ProverkaOtveta();
+}
+
+
+
 void Menu(int ch)
 {
     switch (ch)
     {
     case 1:
         cout << "Компьютер загадал 4-значное число с НЕповторяющимися цифрами. У Вас есть 10 попыток." << endl;
-        Level = 4;
-        Score = 10;
-        ScorePoint = 10;
-        StartNumber = new int[Level];
-        Otgadka = new int[Level];
-        GenSetN(Level, 10, StartNumber);
-        cout << "Zagadano: ";
-        for (int i = 0; i < Level; i++)
-        cout << StartNumber[i];
-        cout << endl;
+        Level_Easy();
 
         break;
     //case 2:
@@ -88,24 +184,12 @@ int main()
 
     srand(time(0));
 
-    /*cout << " Игра 'Быки и коровы'." << endl << " Привет, Игрок!" << endl <<
-        " = = = =  Меню  = = = = " << endl << endl <<
-        " (!) Пункты со * временно недоступны..." << endl << endl <<
-        "1. Легкая игра (4-значное число, 10 попыток)." << endl <<
-        "2)* Обычная игра(6 - значное число, 20 попыток)." << endl <<
-        "3)* Сложная игра(10 - значное число, 40 попыток)." << endl <<
-        "4)* Турнирная таблица." << endl <<
-        "0) Выход." << endl << 
-        "Ваш выбор: ";*/
-
-
-
     int choice;
     
     //Цикл вывода меню повторяется, пока игрок не введет 0 - выход из игры
     do
     {
-        cout << " Игра 'Быки и коровы'." << endl << " Привет, Игрок!" << endl <<
+        cout << endl << " Игра 'Быки и коровы'." << endl << " Привет, Игрок!" << endl <<
             " = = = =  Меню  = = = = " << endl << endl <<
             " (!) Пункты со * временно недоступны..." << endl << endl <<
             "1. Легкая игра (4-значное число, 10 попыток)." << endl <<
@@ -118,8 +202,6 @@ int main()
         Menu(choice);
     } while (choice != 0);
     
-    //int* StartNumber = new int[Level];
-    //int* Otgadka = new int[Level];
 
      system("Pause");
 }
