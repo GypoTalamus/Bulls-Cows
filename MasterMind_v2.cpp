@@ -1,8 +1,10 @@
 ﻿#include "pch.h"
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 #include <cstdio>
 #include <ctime>
+#include <regex>
 
 using namespace std;
 
@@ -17,12 +19,14 @@ int Bulls = 0; //Счётчик Быков
 int Cows = 0; //Счётчик Коров
 
 
+
 // Сравнение на чистое совпадение
 static bool NumberCompare(int * StN, int *Otg)
 {
     bool sovp = true;
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < Level; i++)
     {
+        cout << "StN[" << i << "] = " << StN[i] << ";  Otg[" << i << "] = " << Otg[i] << endl;
         if (StN[i] != Otg[i])
         {
             sovp = false;
@@ -33,7 +37,7 @@ static bool NumberCompare(int * StN, int *Otg)
 }
 
 // Сравнение заданного и введенного чисел 
-static int BullsAndСows(int *StN, int * Otg)
+static int BullsAndСows(int *StN, int *Otg)
 {
     int k = 0;
     for (int i = 0; i < Level; i++)
@@ -54,22 +58,22 @@ static int BullsAndСows(int *StN, int * Otg)
 }
 
 // Генератор множества Nq не повторяющихся целых чисел в диапазоне от 0 до Nm-1 (RVA)
-static void GenSetN(int Nq, int Nm, int *qN)
+static void GenSetN(int Lvl, int Maxis, int *StN)
 {
     int p, k = 0;
-    while (k < Nq)
+    while (k < Lvl)
     {
-        p = rand() % Nm;
-        bool povtor = true;
+        p = rand() % Maxis;
+        bool nepovtor = true;
         for (int i = 0; i < k; i++)
-            if (p == qN[i])
+            if (p == StN[i])
             {
-                povtor = false;
+                nepovtor = false;
                 break;
             }
-        if (povtor)
+        if (nepovtor)
         {
-            qN[k] = p;
+            StN[k] = p;
             k++;
         }
     }
@@ -82,37 +86,78 @@ static bool Answer(int * Otg)
     bool bb = true;
     Bulls = 0;
     Cows = 0;
-    cout << "Введите Ваше 4-значное число: ";
+
     string ss;
-    cin >> ss;
-    // посимвольная разборка
-    for (int i = 0; i < 4; i++)
+    cout << "Введите Ваше " << Level << "-значное число: ";
+    while (bb)
     {
-        char c = ss[i];
-        if (isdigit(c))
+        cin >> ss;
+        // посимвольная разборка
+        for (int i = 0; i < Level; i++)
         {
-            Otg[i] = c - '0';
-        }
-        else
-        {
-            cout << "Вы ввели НЕ " << Level << "-хзначное число!";
-            bb = false;
-            return bb;
+            char c = ss[i];
+            if ((isdigit(c)) && (ss.length() == Level))
+            {
+                Otg[i] = c - '0';
+                bb = false;
+            }
+            else
+            {
+                cout << "Вы ввели НЕ " << Level << "-хзначное число!" << endl << "Введите Ваше " << Level << "-значное число: " << endl;
+                //bb = false;
+                //return bb;
+            }
         }
     }
+
+    //string yyyy;
+    //char yyyyCH[4];
+    //cout <<  "Введите Ваше 4-значное число: ";
+    //while (bb) {
+    //    cin >> yyyy;
+    //    yyyyCH[0] = yyyy[0];
+    //    yyyyCH[1] = yyyy[1];
+    //    yyyyCH[2] = yyyy[2];
+    //    yyyyCH[3] = yyyy[3];
+    //    //первый и второй третий четвертый элемент строки присвоим char-вой переменной чтобы проверить с помощью isdigit число они или нет
+    //    
+    //    if (yyyy.length() == 4 && isdigit(yyyyCH[0]) && isdigit(yyyyCH[1]) && isdigit(yyyyCH[2]) && isdigit(yyyyCH[3])) 
+    //    {
+    //        bb = false; 
+    //    }
+    //    else
+    //    { 
+    //        cout << "Вы ввели НЕ " << Level << "-хзначное число!" << endl <<  "Введите Ваше 4-значное число: " << endl; 
+    //    }
+    //}
+
+    cout << "Otgadano vot tak: ";
+    for (int i = 0; i < Level; i++)
+    {
+        cout << Otgadka[i];
+    }
+    cout << endl << endl;
+    bb = true;
     return bb;
 }
 
+
+
+
 void ProverkaOtveta()
 {
+    bool tak = true;
     while (Counter <= Score)
     {
         if (Answer(Otgadka))  // ответ
+        {
             if (NumberCompare(StartNumber, Otgadka))
+            //if (tak)
             {
                 cout << "Вы угадали число c " << Counter << " попытки!";
                 return;
             }
+        }
 
         int CountAnswer = BullsAndСows(StartNumber, Otgadka);
         if (CountAnswer == 0)
@@ -127,24 +172,41 @@ void ProverkaOtveta()
     }
 }
 
+
+
+
 void Level_Easy()
 {
     Level = 4;
     Score = 10;
     ScorePoint = 10;
+    Counter = 1;
     StartNumber = new int[Level];
     Otgadka = new int[Level];
     GenSetN(Level, 10, StartNumber);
+    /**/
     cout << "Zagadano: ";
     for (int i = 0; i < Level; i++)
     {
         cout << StartNumber[i];
     }
     cout << endl << endl;
-
-
+    /**/
     ProverkaOtveta();
 }
+
+
+
+
+void Proverb()
+{
+    string maskue = "0000";
+    string first, second, third;
+    regex rx("[0-9]{4}");
+    cin >> first >> second >> third;
+    cout << endl << setw(4) << regex_match(first, rx) << "; " << setw(4) << regex_match(second, rx) << "; " << setw(4) << regex_match(third, rx) << "; " << endl;
+}
+
 
 
 
@@ -169,6 +231,9 @@ void Menu(int ch)
     //    cout << "Турнирная таблица временно недоступна. Компьютер не может выполнить Ваш запрос." << endl;
     //    //
     //    break;
+    case 5:
+        Proverb();
+        break;
     case 0:
         cout << "Прощай, Игрок! Надеюсь, мы ещё встретимся!.." << endl;
         break;
@@ -193,9 +258,10 @@ int main()
             " = = = =  Меню  = = = = " << endl << endl <<
             " (!) Пункты со * временно недоступны..." << endl << endl <<
             "1. Легкая игра (4-значное число, 10 попыток)." << endl <<
-            "2)* Обычная игра(6 - значное число, 20 попыток)." << endl <<
+            /*"2)* Обычная игра(6 - значное число, 20 попыток)." << endl <<
             "3)* Сложная игра(10 - значное число, 40 попыток)." << endl <<
-            "4)* Турнирная таблица." << endl <<
+            "4)* Турнирная таблица." << endl <<*/
+            "5) Проверка ввода" << endl <<
             "0) Выход." << endl <<
             "Ваш выбор: ";
         cin >> choice;
