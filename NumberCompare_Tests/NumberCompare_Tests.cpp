@@ -14,19 +14,18 @@ namespace NumberCompareTests
 		{
 			int *StN = new int[2];
 			StN[0] = 2;
-			StN[1] = 4;
+			StN[1] = 5;
 			int *Otg = new int[2];
-			Otg[0] = 3;
+			Otg[0] = 2;
 			Otg[1] = 5;
-			/*if (NumberCompare(StN, Otg))
+
+			//bool NuCo = NumberCompare(StN, Otg);
+			for (unsigned int i = 0; i < 2; i++)
 			{
-				cout << "Вы угадали число!" << endl;
-				return;
-			}*/
-
-			bool NuCo = NumberCompare(StN, Otg);
-
-			Assert::AreEqual(true, NuCo);
+				//Assert::AreEqual(true, NumberCompare(StN, Otg));
+				//Assert::AreEqual(true, NuCo);
+				Assert::AreEqual(StN[i], Otg[i]);
+			}
 		}
 	};
 }
