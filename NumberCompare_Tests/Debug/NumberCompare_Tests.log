@@ -1,0 +1,4 @@
+﻿  NumberCompare_Tests.cpp
+E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\MasterMind_v2.cpp(220,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+     Создается библиотека E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\Debug\NumberCompare_Tests.lib и объект E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\Debug\NumberCompare_Tests.exp
+  NumberCompare_Tests.vcxproj -> E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\Debug\NumberCompare_Tests.dll

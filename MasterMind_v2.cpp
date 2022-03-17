@@ -4,7 +4,6 @@
 #include <iomanip>
 #include <cstdio>
 #include <ctime>
-#include <regex>
 
 using namespace std;
 
@@ -19,8 +18,9 @@ int Bulls = 0; //Счётчик Быков
 int Cows = 0; //Счётчик Коров
 
 
-// Сравнение на чистое совпадение
-static bool NumberCompare(int * StN, int *Otg)
+
+//Сравнение на чистое совпадение
+static bool NumberCompare(int *StN, int *Otg)
 {
     bool sovp = true;
     for (int i = 0; i < Level; i++)
@@ -34,7 +34,7 @@ static bool NumberCompare(int * StN, int *Otg)
     return sovp;
 }
 
-// Сравнение заданного и введенного чисел 
+//Сравнение заданного и введенного чисел 
 static int BullsAndСows(int *StN, int *Otg)
 {
     int k = 0;
@@ -55,7 +55,7 @@ static int BullsAndСows(int *StN, int *Otg)
     return k;
 }
 
-// Генератор множества не повторяющихся целых чисел в диапазоне от 0 до Maxis-1
+// Генератор множества StN не повторяющихся целых чисел в диапазоне от 0 до Maxis-1
 static void GenSetN(int Lvl, int Maxis, int *StN)
 {
     int p, k = 0;
@@ -78,13 +78,12 @@ static void GenSetN(int Lvl, int Maxis, int *StN)
 }
 
 
-// ответ пользователя (строка в число)
+//Ответ пользователя (строка в число), так же проверяется правильность ввода числа (только цифры, не менее и не более заданных параметрами Сложности игры)
 static bool Answer(int * Otg)
 {
     bool bb = true;
     Bulls = 0;
     Cows = 0;
-
     string ss;
     cout << "Введите Ваше " << Level << "-значное число: ";
     while (bb)
@@ -106,11 +105,11 @@ static bool Answer(int * Otg)
             }
         }
     }
-
     bb = true;
     return bb;
 }
 
+//Запрашиваем ввод числа-отгадки, проверяем на совпадение, подсчитываем количество попыток ответа
 void ProverkaOtveta()
 {
     bool tak = true;
@@ -152,7 +151,7 @@ void Zagadano()
     cout << endl << endl;
 }
 
-//
+//Инициализируем переменные для загаданного числа, отгадки, генерируем загаданное и запускаем получение и проверку ответа
 void Level_Settings()
 {
     cout << "Компьютер загадал " << Level << "-значное число с НЕповторяющимися цифрами.У Вас есть " << Score << " попыток." << endl;
@@ -167,6 +166,7 @@ void Level_Settings()
     system("pause");
 }
 
+//Параметры Простой игры
 void Level_Easy()
 {
     Level = 4;
@@ -174,6 +174,7 @@ void Level_Easy()
     Level_Settings();
 }
 
+//Параметры Средней игры
 void Level_Medium()
 {
     Level = 6;
@@ -181,6 +182,7 @@ void Level_Medium()
     Level_Settings();
 }
 
+//Параметры Сложной игры
 void Level_Hard()
 {
     Level = 8;
@@ -188,6 +190,7 @@ void Level_Hard()
     Level_Settings();
 }
 
+//Переключатель-Меню
 void Menu(int ch)
 {
     switch (ch)
@@ -210,16 +213,14 @@ void Menu(int ch)
     }
 }
 
+//Основное тело программы
 int main()
 {
     setlocale(LC_ALL, "Russian");
-
     srand(time(0));
-
     cout << endl << " Игра 'Быки и коровы'." << endl << " Привет, Игрок!" << endl << endl;
+    int choice; //переменная для выбора пункта меню
 
-    int choice;
-    
     //Цикл вывода меню повторяется, пока игрок не введет 0 - выход из игры
     do
     {
