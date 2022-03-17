@@ -143,7 +143,7 @@ void ProverkaOtveta()
     cout << " даже за " << Score << " предоставленных попыток..." << endl;
 }
 
-
+//Вывод на экран загаданного компьютером числа
 void Zagadano()
 {
     cout << "Загаданное число: ";
@@ -152,18 +152,19 @@ void Zagadano()
     cout << endl << endl;
 }
 
+//
 void Level_Settings()
 {
+    cout << "Компьютер загадал " << Level << "-значное число с НЕповторяющимися цифрами.У Вас есть " << Score << " попыток." << endl;
     Counter = 1;
     //ScorePoint = Score;
     StartNumber = new int[Level];
     Otgadka = new int[Level];
-    GenSetN(Level, Score, StartNumber);
-    // Zagadano();
+    GenSetN(Level, 10, StartNumber);
+    //Zagadano();
     ProverkaOtveta();
     cout << "Игра завершена!" << endl << endl;
     system("pause");
-
 }
 
 void Level_Easy()
@@ -180,23 +181,26 @@ void Level_Medium()
     Level_Settings();
 }
 
+void Level_Hard()
+{
+    Level = 8;
+    Score = 40;
+    Level_Settings();
+}
 
 void Menu(int ch)
 {
     switch (ch)
     {
     case 1:
-        cout << "Компьютер загадал 4-значное число с НЕповторяющимися цифрами. У Вас есть 10 попыток." << endl;
         Level_Easy();
-
         break;
     case 2:
         Level_Medium();
         break;
-    //case 3:
-    //    cout << "Сложная игра временно недоступна. Компьютер не может выполнить Ваш запрос." << endl;
-    //    //
-    //    break;
+    case 3:
+        Level_Hard();
+        break;
     case 0:
         cout << "Прощай, Игрок! Надеюсь, мы ещё встретимся!.." << endl;
         break;
@@ -222,10 +226,9 @@ int main()
         Level = 0;
         Score = 0;
         cout <<  " = = = =  Меню  = = = = " << endl << endl <<
-            " (!) Пункты со * временно недоступны..." << endl << endl <<
-            "1) Легкая игра (4-значное число, 10 попыток)." << endl <<
-            "2) Средняя игра (6 - значное число, 20 попыток)." << endl <<
-            /*"3)* Сложная игра(10 - значное число, 40 попыток)." << endl <<*/
+            "1) Простая игра (4-значное число, 10 попыток)." << endl <<
+            "2) Средняя игра (6-значное число, 20 попыток)." << endl <<
+            "3) Сложная игра (8-значное число, 40 попыток)." << endl <<
             "0) Выход." << endl <<
             "Ваш выбор: ";
         cin >> choice;
