@@ -56,12 +56,12 @@ static int BullsAndСows(int *StN, int *Otg, int lvl)
 
 
 //Ответ пользователя (строка в число), так же проверяется правильность ввода числа (только цифры, не менее и не более заданных параметрами Сложности игры)
-static bool Answer(int * Otg, int lvl, string ss)
+static bool Answer(int * Otg, int lvl)
 {
     bool bb = true;
     Bulls = 0;
     Cows = 0;
-    //string ss;
+    string ss;
     cout << "Введите Ваше " << lvl << "-значное число: ";
     while (bb)
     {
@@ -82,35 +82,30 @@ static bool Answer(int * Otg, int lvl, string ss)
             }
         }
     }
-    //bb = true;
+    bb = true;
     return bb;
 }
-
 
 //Запрашиваем ввод числа-отгадки, проверяем на совпадение, подсчитываем количество попыток ответа
 void ProverkaOtveta()
 {
-    bool tak = true;
-    string StrTry = "";
     while (Counter <= Score)
     {
-        if (Answer(Otgadka, Level, StrTry))  // ответ
-        {
-            if (NumberCompare(StartNumber, Otgadka, Level))
-            {
-                cout << "Вы угадали число c " << Counter << " попытки!" << endl;
-                return;
-            }
-        }
-
+        if (Answer(Otgadka, Level))  // ответ
+                if (NumberCompare(StartNumber, Otgadka, Level))
+                {
+                    cout << "Вы угадали число c " << Counter << " попытки!" << endl;
+                    return;
+                }
+        
         int CountAnswer = BullsAndСows(StartNumber, Otgadka, Level);
         if (CountAnswer == 0)
         {
-            cout << "Ход " << Counter << " . В Вашем числе нет загаданных цифр." << endl;
+            cout << "Ход " << Counter << " . В Вашем числе нет загаданных цифр. Осталось " << Score-Counter << " попыток." << endl;
         }
         else
         {
-            cout << "Ход " << Counter << ". Быки = " << Bulls << ", Коровы = " << Cows << "." << endl;
+            cout << "Ход " << Counter << ". Быки = " << Bulls << ", Коровы = " << Cows << ". Осталось " << Score-Counter << " попыток."<< endl;
         }
         Counter++;
     }
@@ -173,6 +168,16 @@ void Menu(int ch)
         Score = 40;
         Level_Settings();
         break;
+    case 4:
+        Level = 2;
+        Score = 10;
+        Level_Settings();
+        break;
+    case 5:
+        Level = 10;
+        Score = 80;
+        Level_Settings();
+        break;
     case 0:
         cout << "Прощай, Игрок! Надеюсь, мы ещё встретимся!.." << endl;
         break;
@@ -199,6 +204,8 @@ int main()
             "1) Простая игра (4-значное число, 10 попыток)." << endl <<
             "2) Средняя игра (6-значное число, 20 попыток)." << endl <<
             "3) Сложная игра (8-значное число, 40 попыток)." << endl <<
+            "4)* Кошмарная игра (10-значное число, 5 попыток)." << endl <<
+            "5) Бонусная игра ( 2-значное число, 10 попыток)." << endl <<
             "0) Выход." << endl <<
             "Ваш выбор: ";
         cin >> choice;
