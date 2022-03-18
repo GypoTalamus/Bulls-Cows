@@ -47,9 +47,10 @@ namespace NumberCompareTests
 			StN[2] = 4;
 			StN[3] = 7;
 			int* Otg = new int[4];
-			Otg[0] = 12;
-			Otg[1] = 1;
-			Otg[2] = 0;
+			Otg[0] = 6;
+			Otg[1] = 2;
+			Otg[2] = 4;
+			Otg[3] = 8;
 
 			bool NuCo = NumberCompare(StN, Otg, 4);
 			Assert::AreEqual(false, NuCo);

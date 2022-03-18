@@ -1,6 +1,5 @@
 ﻿#include "pch.h"
 #include <iostream>
-#include <fstream>
 #include <iomanip>
 #include <cstdio>
 #include <ctime>
@@ -9,7 +8,7 @@ using namespace std;
 
 int *StartNumber;  // загадываемое число
 int *Otgadka;  // Ваш ответ
-int Counter = 1; //Счётчик ответов
+int Counter; //Счётчик ответов
 int Score; //Количество очков сложности
 int Level; //Сложность игры
 
@@ -18,10 +17,10 @@ int Cows = 0; //Счётчик Коров
 
 //Сравнение на чистое совпадение
 //Unit-test NumberCompare_Tests
-static bool NumberCompare(int *StN, int *Otg, int Razmer)
+static bool NumberCompare(int *StN, int *Otg, int lvl)
 {
     bool sovp = true;
-    for (int i = 0; i < Razmer; i++)
+    for (int i = 0; i < lvl; i++)
     {
         if (StN[i] != Otg[i])
         {
