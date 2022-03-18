@@ -20,10 +20,10 @@ int Cows = 0; //Счётчик Коров
 
 
 //Сравнение на чистое совпадение
-static bool NumberCompare(int *StN, int *Otg)
+bool NumberCompare(int *StN, int *Otg, int Razmer)
 {
     bool sovp = true;
-    for (int i = 0; i < Level; i++)
+    for (int i = 0; i < Razmer; i++)
     {
         if (StN[i] != Otg[i])
         {
@@ -117,7 +117,7 @@ void ProverkaOtveta()
     {
         if (Answer(Otgadka))  // ответ
         {
-            if (NumberCompare(StartNumber, Otgadka))
+            if (NumberCompare(StartNumber, Otgadka, Level))
             {
                 cout << "Вы угадали число c " << Counter << " попытки!" << endl;
                 return;
