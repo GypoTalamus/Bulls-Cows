@@ -116,6 +116,23 @@ void ProverkaOtveta()
     cout << " даже за " << Score << " предоставленных попыток..." << endl;
 }
 
+static bool GenSetN(int step, int pTemp, int *StN)
+{
+    bool nepovtor = true;
+    for (int i = 0; i < step; i++)
+        if (pTemp == StN[i])
+        {
+            nepovtor = false;
+            break;
+        }
+    if (nepovtor)
+    {
+        StN[step] = pTemp;
+    }
+    return nepovtor;
+}
+
+
 //Инициализируем переменные для загаданного числа, отгадки, генерируем загаданное и запускаем получение и проверку ответа
 void Level_Settings()
 {
@@ -128,18 +145,8 @@ void Level_Settings()
     while (step < Level)
     {
         pTemp = rand() % 10;
-        bool nepovtor = true;
-        for (int i = 0; i < step; i++)
-            if (pTemp == StartNumber[i])
-            {
-                nepovtor = false;
-                break;
-            }
-        if (nepovtor)
-            {
-                StartNumber[step] = pTemp;
-                step++;
-            }
+        if (GenSetN(step, pTemp, StartNumber))
+            step++;
     }
 
     ProverkaOtveta();
@@ -205,7 +212,7 @@ int main()
             "2) Средняя игра (6-значное число, 20 попыток)." << endl <<
             "3) Сложная игра (8-значное число, 40 попыток)." << endl <<
             "4)* Кошмарная игра (10-значное число, 5 попыток)." << endl <<
-            "5) Бонусная игра ( 2-значное число, 10 попыток)." << endl <<
+            "5) Бонусная игра (10-значное число, 80 попыток)." << endl <<
             "0) Выход." << endl <<
             "Ваш выбор: ";
         cin >> choice;

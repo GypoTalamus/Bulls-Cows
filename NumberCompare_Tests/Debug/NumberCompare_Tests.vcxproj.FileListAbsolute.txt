@@ -1,2 +1,0 @@
-E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\Debug\NumberCompare_Tests.dll.lastcodeanalysissucceeded
-E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\NumberCompare_Tests\Debug\NativeCodeAnalysis.read.1.tlog
