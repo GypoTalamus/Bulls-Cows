@@ -12,13 +12,13 @@ int *Otgadka;  // Ваш ответ
 int Counter = 1; //Счётчик ответов
 int Score; //Количество очков сложности
 int Level; //Сложность игры
-//int ScorePoint;//Счётчик очков - не реализована турнирная таблица
 
 int Bulls = 0; //Счётчик Быков
 int Cows = 0; //Счётчик Коров
 
 //Сравнение на чистое совпадение
-bool NumberCompare(int *StN, int *Otg, int Razmer)
+//Unit-test NumberCompare_Tests
+static bool NumberCompare(int *StN, int *Otg, int Razmer)
 {
     bool sovp = true;
     for (int i = 0; i < Razmer; i++)
@@ -34,6 +34,7 @@ bool NumberCompare(int *StN, int *Otg, int Razmer)
 
 
 //Сравнение заданного и введенного чисел 
+//Unit-test BullsAndCows_Tests
 static int BullsAndСows(int *StN, int *Otg, int lvl)
 {
     int k = 0;
@@ -55,36 +56,13 @@ static int BullsAndСows(int *StN, int *Otg, int lvl)
 }
 
 
-// Генератор множества StN не повторяющихся целых чисел в диапазоне от 0 до Maxis-1
-static void GenSetN(int Lvl, int Maxis, int *StN)
-{
-    int p, k = 0;
-    while (k < Lvl)
-    {
-        p = rand() % Maxis;
-        bool nepovtor = true;
-        for (int i = 0; i < k; i++)
-            if (p == StN[i])
-            {
-                nepovtor = false;
-                break;
-            }
-        if (nepovtor)
-        {
-            StN[k] = p;
-            k++;
-        }
-    }
-}
-
-
 //Ответ пользователя (строка в число), так же проверяется правильность ввода числа (только цифры, не менее и не более заданных параметрами Сложности игры)
-static bool Answer(int * Otg, int lvl)
+static bool Answer(int * Otg, int lvl, string ss)
 {
     bool bb = true;
     Bulls = 0;
     Cows = 0;
-    string ss;
+    //string ss;
     cout << "Введите Ваше " << lvl << "-значное число: ";
     while (bb)
     {
@@ -105,7 +83,7 @@ static bool Answer(int * Otg, int lvl)
             }
         }
     }
-    bb = true;
+    //bb = true;
     return bb;
 }
 
@@ -114,9 +92,10 @@ static bool Answer(int * Otg, int lvl)
 void ProverkaOtveta()
 {
     bool tak = true;
+    string StrTry = "";
     while (Counter <= Score)
     {
-        if (Answer(Otgadka, Level))  // ответ
+        if (Answer(Otgadka, Level, StrTry))  // ответ
         {
             if (NumberCompare(StartNumber, Otgadka, Level))
             {
@@ -148,10 +127,27 @@ void Level_Settings()
 {
     cout << "Компьютер загадал " << Level << "-значное число с НЕповторяющимися цифрами.У Вас есть " << Score << " попыток." << endl;
     Counter = 1;
-    //ScorePoint = Score;
     StartNumber = new int[Level];
     Otgadka = new int[Level];
-    GenSetN(Level, 10, StartNumber);
+    //Рандомно генерируем множество StartNumber не повторяющихся целых чисел в диапазоне от 0 до 9 (10 цифр)
+    int pTemp, step = 0;
+    while (step < Level)
+    {
+        pTemp = rand() % 10;
+        bool nepovtor = true;
+        for (int i = 0; i < step; i++)
+            if (pTemp == StartNumber[i])
+            {
+                nepovtor = false;
+                break;
+            }
+        if (nepovtor)
+            {
+                StartNumber[step] = pTemp;
+                step++;
+            }
+    }
+
     ProverkaOtveta();
     cout << "Игра завершена!" << endl << endl;
     system("pause");
@@ -167,19 +163,16 @@ void Menu(int ch)
         Level = 4;
         Score = 10;
         Level_Settings();
-        //Level_Easy();
         break;
     case 2:
         Level = 6;
         Score = 20;
         Level_Settings();
-        //Level_Medium();
         break;
     case 3:
         Level = 8;
         Score = 40;
         Level_Settings();
-        //Level_Hard();
         break;
     case 0:
         cout << "Прощай, Игрок! Надеюсь, мы ещё встретимся!.." << endl;

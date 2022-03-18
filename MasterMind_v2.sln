@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MasterMind_v2", "MasterMind_v2.vcxproj", "{40DA447D-E22E-4C56-9491-229FF082B98C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GenSetN_Tests", "GenSetN_Tests\GenSetN_Tests.vcxproj", "{83D66CE7-1222-4946-B710-18A802CD70E6}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NumberCompare_Tests", "NumberCompare_Tests\NumberCompare_Tests.vcxproj", "{502D5EF5-F54F-4D20-9959-79137A096F85}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Answer_Tests", "Answer_Tests\Answer_Tests.vcxproj", "{B39BC013-EFFC-49FC-B741-B8F1663BA8F2}"
@@ -29,14 +27,6 @@ Global
 		{40DA447D-E22E-4C56-9491-229FF082B98C}.Release|x64.Build.0 = Release|x64
 		{40DA447D-E22E-4C56-9491-229FF082B98C}.Release|x86.ActiveCfg = Release|Win32
 		{40DA447D-E22E-4C56-9491-229FF082B98C}.Release|x86.Build.0 = Release|Win32
-		{83D66CE7-1222-4946-B710-18A802CD70E6}.Debug|x64.ActiveCfg = Debug|x64
-		{83D66CE7-1222-4946-B710-18A802CD70E6}.Debug|x64.Build.0 = Debug|x64
-		{83D66CE7-1222-4946-B710-18A802CD70E6}.Debug|x86.ActiveCfg = Debug|Win32
-		{83D66CE7-1222-4946-B710-18A802CD70E6}.Debug|x86.Build.0 = Debug|Win32
-		{83D66CE7-1222-4946-B710-18A802CD70E6}.Release|x64.ActiveCfg = Release|x64
-		{83D66CE7-1222-4946-B710-18A802CD70E6}.Release|x64.Build.0 = Release|x64
-		{83D66CE7-1222-4946-B710-18A802CD70E6}.Release|x86.ActiveCfg = Release|Win32
-		{83D66CE7-1222-4946-B710-18A802CD70E6}.Release|x86.Build.0 = Release|Win32
 		{502D5EF5-F54F-4D20-9959-79137A096F85}.Debug|x64.ActiveCfg = Debug|x64
 		{502D5EF5-F54F-4D20-9959-79137A096F85}.Debug|x64.Build.0 = Debug|x64
 		{502D5EF5-F54F-4D20-9959-79137A096F85}.Debug|x86.ActiveCfg = Debug|Win32
