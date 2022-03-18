@@ -21,7 +21,6 @@ namespace NumberCompareTests
 
 			bool NuCo = NumberCompare(StN, Otg, 2);
 			Assert::AreEqual(false, NuCo);
-
 		}
 
 		TEST_METHOD(TestMethod2)

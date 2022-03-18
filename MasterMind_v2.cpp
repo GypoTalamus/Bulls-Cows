@@ -17,8 +17,6 @@ int Level; //Сложность игры
 int Bulls = 0; //Счётчик Быков
 int Cows = 0; //Счётчик Коров
 
-
-
 //Сравнение на чистое совпадение
 bool NumberCompare(int *StN, int *Otg, int Razmer)
 {
@@ -34,13 +32,14 @@ bool NumberCompare(int *StN, int *Otg, int Razmer)
     return sovp;
 }
 
+
 //Сравнение заданного и введенного чисел 
-static int BullsAndСows(int *StN, int *Otg)
+static int BullsAndСows(int *StN, int *Otg, int lvl)
 {
     int k = 0;
-    for (int i = 0; i < Level; i++)
+    for (int i = 0; i < lvl; i++)
     {
-        for (int j = 0; j < Level; j++)
+        for (int j = 0; j < lvl; j++)
         {
             if (StN[i] == Otg[j])
             {
@@ -54,6 +53,7 @@ static int BullsAndСows(int *StN, int *Otg)
     }
     return k;
 }
+
 
 // Генератор множества StN не повторяющихся целых чисел в диапазоне от 0 до Maxis-1
 static void GenSetN(int Lvl, int Maxis, int *StN)
@@ -79,28 +79,28 @@ static void GenSetN(int Lvl, int Maxis, int *StN)
 
 
 //Ответ пользователя (строка в число), так же проверяется правильность ввода числа (только цифры, не менее и не более заданных параметрами Сложности игры)
-static bool Answer(int * Otg)
+static bool Answer(int * Otg, int lvl)
 {
     bool bb = true;
     Bulls = 0;
     Cows = 0;
     string ss;
-    cout << "Введите Ваше " << Level << "-значное число: ";
+    cout << "Введите Ваше " << lvl << "-значное число: ";
     while (bb)
     {
         cin >> ss;
         // посимвольная разборка
-        for (int i = 0; i < Level; i++)
+        for (int i = 0; i < lvl; i++)
         {
             char c = ss[i];
-            if ((isdigit(c)) && (ss.length() == Level))
+            if ((isdigit(c)) && (ss.length() == lvl))
             {
                 Otg[i] = c - '0';
                 bb = false;
             }
             else
             {
-                cout << "Игрок, Вы ввели НЕ " << Level << "-хзначное число! Будьте так любезны, введите " << Level << "-значное число: " << endl;
+                cout << "Игрок, Вы ввели НЕ " << lvl << "-хзначное число! Будьте так любезны, введите " << lvl << "-значное число: " << endl;
                 break;
             }
         }
@@ -109,13 +109,14 @@ static bool Answer(int * Otg)
     return bb;
 }
 
+
 //Запрашиваем ввод числа-отгадки, проверяем на совпадение, подсчитываем количество попыток ответа
 void ProverkaOtveta()
 {
     bool tak = true;
     while (Counter <= Score)
     {
-        if (Answer(Otgadka))  // ответ
+        if (Answer(Otgadka, Level))  // ответ
         {
             if (NumberCompare(StartNumber, Otgadka, Level))
             {
@@ -124,7 +125,7 @@ void ProverkaOtveta()
             }
         }
 
-        int CountAnswer = BullsAndСows(StartNumber, Otgadka);
+        int CountAnswer = BullsAndСows(StartNumber, Otgadka, Level);
         if (CountAnswer == 0)
         {
             cout << "Ход " << Counter << " . В Вашем числе нет загаданных цифр." << endl;
@@ -142,15 +143,6 @@ void ProverkaOtveta()
     cout << " даже за " << Score << " предоставленных попыток..." << endl;
 }
 
-//Вывод на экран загаданного компьютером числа
-void Zagadano()
-{
-    cout << "Загаданное число: ";
-    for (int i = 0; i < Level; i++)
-           cout << StartNumber[i];
-    cout << endl << endl;
-}
-
 //Инициализируем переменные для загаданного числа, отгадки, генерируем загаданное и запускаем получение и проверку ответа
 void Level_Settings()
 {
@@ -160,35 +152,11 @@ void Level_Settings()
     StartNumber = new int[Level];
     Otgadka = new int[Level];
     GenSetN(Level, 10, StartNumber);
-    //Zagadano();
     ProverkaOtveta();
     cout << "Игра завершена!" << endl << endl;
     system("pause");
 }
 
-//Параметры Простой игры
-void Level_Easy()
-{
-    Level = 4;
-    Score = 10;
-    Level_Settings();
-}
-
-//Параметры Средней игры
-void Level_Medium()
-{
-    Level = 6;
-    Score = 20;
-    Level_Settings();
-}
-
-//Параметры Сложной игры
-void Level_Hard()
-{
-    Level = 8;
-    Score = 40;
-    Level_Settings();
-}
 
 //Переключатель-Меню
 void Menu(int ch)
@@ -196,13 +164,22 @@ void Menu(int ch)
     switch (ch)
     {
     case 1:
-        Level_Easy();
+        Level = 4;
+        Score = 10;
+        Level_Settings();
+        //Level_Easy();
         break;
     case 2:
-        Level_Medium();
+        Level = 6;
+        Score = 20;
+        Level_Settings();
+        //Level_Medium();
         break;
     case 3:
-        Level_Hard();
+        Level = 8;
+        Score = 40;
+        Level_Settings();
+        //Level_Hard();
         break;
     case 0:
         cout << "Прощай, Игрок! Надеюсь, мы ещё встретимся!.." << endl;
