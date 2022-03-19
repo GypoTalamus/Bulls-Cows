@@ -1,0 +1,4 @@
+﻿E:\Program Files\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: промежуточный каталог (Debug\) содержит файлы, которые используются совместно с другим проектом (BullsAndСows_Tests.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+  BullsAndСows_Tests.cpp
+E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\MasterMind_v2.cpp(236,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  BullsAndCows_Tests.vcxproj -> E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\Debug\BullsAndCows_Tests.dll
