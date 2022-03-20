@@ -23,7 +23,7 @@ namespace BullsAndCowsTests
 			Otg[2] = 3;
 			Otg[3] = 4;
 
-			int CountAnswer = BullsAnd—ows(StN, Otg, 4);
+			int CountAnswer = BullsAndCows(StN, Otg, 4);
 
 			Assert::AreEqual(4, CountAnswer);
 			delete[] StN;
@@ -41,7 +41,7 @@ namespace BullsAndCowsTests
 			Otg[1] = 0;
 			Otg[2] = 5;
 
-			int CountAnswer = BullsAnd—ows(StN, Otg, 3);
+			int CountAnswer = BullsAndCows(StN, Otg, 3);
 
 			Assert::AreEqual(2, CountAnswer);
 			delete[] StN;
@@ -69,7 +69,7 @@ namespace BullsAndCowsTests
 			Otg[6] = 7;
 			Otg[7] = 3;
 
-			int CountAnswer = BullsAnd—ows(StN, Otg, 8);
+			int CountAnswer = BullsAndCows(StN, Otg, 8);
 
 			Assert::AreEqual(6, CountAnswer);
 			delete[] StN;
@@ -91,7 +91,7 @@ namespace BullsAndCowsTests
 			Otg[3] = 9;
 			Otg[4] = 4;
 
-			int CountAnswer = BullsAnd—ows(StN, Otg, 5);
+			int CountAnswer = BullsAndCows(StN, Otg, 5);
 
 			Assert::AreEqual(3, CountAnswer);
 			delete[] StN;

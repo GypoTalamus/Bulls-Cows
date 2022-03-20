@@ -1,3 +1,4 @@
 ﻿  GenSetN_Tests.cpp
-E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\MasterMind_v2.cpp(215,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\MasterMind_v2.cpp(223,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+     Создается библиотека E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\Debug\GenSetN_Tests.lib и объект E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\Debug\GenSetN_Tests.exp
   GenSetN_Tests.vcxproj -> E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\Debug\GenSetN_Tests.dll

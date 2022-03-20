@@ -36,7 +36,7 @@ static bool NumberCompare(int *StN, int *Otg, int lvl)
 
 //Сравнение заданного и введенного чисел 
 //Unit-test BullsAndCows_Tests
-static int BullsAndСows(int *StN, int *Otg, int lvl)
+static int BullsAndCows(int *StN, int *Otg, int lvl)
 {
     int k = 0;
     for (int i = 0; i < lvl; i++)
@@ -105,7 +105,7 @@ void ProverkaOtveta(int lvl, int scor)
             return;
         }
 
-        int CountAnswer = BullsAndСows(StartNumber, Otgadka, lvl);
+        int CountAnswer = BullsAndCows(StartNumber, Otgadka, lvl);
         if (CountAnswer == 0)
         {
             cout << "Ход " << Counter << " . В Вашем числе нет загаданных цифр. Осталось " << scor-Counter << " попыток." << endl;
