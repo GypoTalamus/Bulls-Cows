@@ -54,7 +54,27 @@ namespace NumberCompareTests
 
 			bool NuCo = NumberCompare(StN, Otg, 4);
 			Assert::AreEqual(false, NuCo);
+		}
 
+		TEST_METHOD(TestMethod4)
+			{
+				int* StN = new int[6];
+				StN[0] = 6;
+				StN[1] = 2;
+				StN[2] = 4;
+				StN[3] = 7;
+				StN[4] = 3;
+				StN[5] = 1;
+				int* Otg = new int[6];
+				Otg[0] = 6;
+				Otg[1] = 2;
+				Otg[2] = 4;
+				Otg[3] = 7;
+				Otg[4] = 3;
+				Otg[5] = 1;
+
+				bool NuCo = NumberCompare(StN, Otg, 6);
+				Assert::AreEqual(true, NuCo);
 		}
 	};
 }

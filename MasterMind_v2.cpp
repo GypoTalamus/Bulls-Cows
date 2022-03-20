@@ -58,7 +58,7 @@ static int BullsAndСows(int *StN, int *Otg, int lvl)
 
 
 //Ответ пользователя (строка в число), так же проверяется правильность ввода числа (только цифры, не менее и не более заданных параметрами Сложности игры)
-//static bool Answer(int * Otg, int lvl)
+// НЕ всё можно протестировать Unit'ами
 static bool Answer(int* Otg, int lvl)
 {
     bool bb = true;
@@ -90,6 +90,7 @@ static bool Answer(int* Otg, int lvl)
     bb = true;
     return bb;
 }
+
 
 //Запрашиваем ввод числа-отгадки, проверяем на совпадение, подсчитываем количество попыток ответа
 // НЕ всё можно протестировать Unit'ами
