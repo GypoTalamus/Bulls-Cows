@@ -26,6 +26,8 @@ namespace BullsAndCowsTests
 			int CountAnswer = BullsAnd—ows(StN, Otg, 4);
 
 			Assert::AreEqual(4, CountAnswer);
+			delete[] StN;
+			delete[] Otg;
 		}
 
 		TEST_METHOD(TestMethod2)
@@ -42,6 +44,8 @@ namespace BullsAndCowsTests
 			int CountAnswer = BullsAnd—ows(StN, Otg, 3);
 
 			Assert::AreEqual(2, CountAnswer);
+			delete[] StN;
+			delete[] Otg;
 		}
 
 		TEST_METHOD(TestMethod3)
@@ -68,6 +72,8 @@ namespace BullsAndCowsTests
 			int CountAnswer = BullsAnd—ows(StN, Otg, 8);
 
 			Assert::AreEqual(6, CountAnswer);
+			delete[] StN;
+			delete[] Otg;
 		}
 
 		TEST_METHOD(TestMethod4)
@@ -88,6 +94,8 @@ namespace BullsAndCowsTests
 			int CountAnswer = BullsAnd—ows(StN, Otg, 5);
 
 			Assert::AreEqual(3, CountAnswer);
+			delete[] StN;
+			delete[] Otg;
 		}
 	};
 }

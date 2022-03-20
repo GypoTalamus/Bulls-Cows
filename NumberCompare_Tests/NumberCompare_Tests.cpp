@@ -21,6 +21,8 @@ namespace NumberCompareTests
 
 			bool NuCo = NumberCompare(StN, Otg, 2);
 			Assert::AreEqual(false, NuCo);
+			delete[] StN;
+			delete[] Otg;
 		}
 
 		TEST_METHOD(TestMethod2)
@@ -36,7 +38,8 @@ namespace NumberCompareTests
 
 			bool NuCo = NumberCompare(StN, Otg, 3);
 			Assert::AreEqual(true, NuCo);
-
+			delete[] StN;
+			delete[] Otg;
 		}
 
 		TEST_METHOD(TestMethod3)
@@ -54,6 +57,8 @@ namespace NumberCompareTests
 
 			bool NuCo = NumberCompare(StN, Otg, 4);
 			Assert::AreEqual(false, NuCo);
+			delete[] StN;
+			delete[] Otg;
 		}
 
 		TEST_METHOD(TestMethod4)
@@ -75,6 +80,8 @@ namespace NumberCompareTests
 
 				bool NuCo = NumberCompare(StN, Otg, 6);
 				Assert::AreEqual(true, NuCo);
+				delete[] StN;
+				delete[] Otg;
 		}
 	};
 }

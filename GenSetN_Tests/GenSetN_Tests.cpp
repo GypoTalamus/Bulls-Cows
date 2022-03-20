@@ -25,6 +25,7 @@ namespace GenSetNTests
 			{
 				Assert::AreEqual(Mas[i], StN[i]);
 			}
+			delete[] StN;
 		}
 
 		TEST_METHOD(TestMethod2)
@@ -42,6 +43,7 @@ namespace GenSetNTests
 			{
 				Assert::AreEqual(Mas[i], StN[i]);
 			}
+			delete[] StN;
 		}
 	};
 }
