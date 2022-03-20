@@ -1,12 +1,12 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "CppUnitTest.h"
 #include "../MasterMind_v2.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace BullsAndСowsTests
+namespace BullsAndCowsTests
 {
-	TEST_CLASS(BullsAndСowsTests)
+	TEST_CLASS(BullsAndCowsTests)
 	{
 	public:
 		
@@ -23,7 +23,7 @@ namespace BullsAndСowsTests
 			Otg[2] = 3;
 			Otg[3] = 4;
 
-			int CountAnswer = BullsAndСows(StN, Otg, 4);
+			int CountAnswer = BullsAnd�ows(StN, Otg, 4);
 
 			Assert::AreEqual(4, CountAnswer);
 		}
@@ -39,7 +39,7 @@ namespace BullsAndСowsTests
 			Otg[1] = 0;
 			Otg[2] = 5;
 
-			int CountAnswer = BullsAndСows(StN, Otg, 3);
+			int CountAnswer = BullsAnd�ows(StN, Otg, 3);
 
 			Assert::AreEqual(2, CountAnswer);
 		}
@@ -65,9 +65,29 @@ namespace BullsAndСowsTests
 			Otg[6] = 7;
 			Otg[7] = 3;
 
-			int CountAnswer = BullsAndСows(StN, Otg, 8);
+			int CountAnswer = BullsAnd�ows(StN, Otg, 8);
 
 			Assert::AreEqual(6, CountAnswer);
+		}
+
+		TEST_METHOD(TestMethod4)
+		{
+			int* StN = new int[5];
+			StN[0] = 0;
+			StN[1] = 2;
+			StN[2] = 3;
+			StN[3] = 4;
+			StN[4] = 5;
+			int* Otg = new int[5];
+			Otg[0] = 2;
+			Otg[1] = 1;
+			Otg[2] = 5;
+			Otg[3] = 9;
+			Otg[4] = 4;
+
+			int CountAnswer = BullsAnd�ows(StN, Otg, 5);
+
+			Assert::AreEqual(3, CountAnswer);
 		}
 	};
 }

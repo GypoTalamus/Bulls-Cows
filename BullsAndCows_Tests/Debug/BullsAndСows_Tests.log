@@ -1,5 +1,0 @@
-﻿  BullsAndСows_Tests.cpp
-E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\MasterMind_v2.cpp(201,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-     Создается библиотека E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\Debug\BullsAndСows_Tests.lib и объект E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\Debug\BullsAndСows_Tests.exp
-LINK : warning LNK4232: имя BullsAndСows_Tests.dll содержит не ASCII символы, DLL нельзя будет загрузить в систему с кодовой страницей ANSI, отличной от 1251
-  BullsAndСows_Tests.vcxproj -> E:\My_Games\TRPO\MasterMind_v2\MasterMind_v2\Debug\BullsAndСows_Tests.dll

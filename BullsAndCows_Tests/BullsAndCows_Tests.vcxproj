@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{271BD9F9-89F6-4AB4-B121-1E6B5498C384}</ProjectGuid>
+    <ProjectGuid>{005986FE-F192-47BF-8F65-5BCD321D7D09}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>BullsAndСowsTests</RootNamespace>
+    <RootNamespace>BullsAndCowsTests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectSubType>NativeUnitTestProject</ProjectSubType>
   </PropertyGroup>
@@ -156,7 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BullsAndСows_Tests.cpp" />
+    <ClCompile Include="BullsAndCows_Tests.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -166,11 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MasterMind_v2.vcxproj">
-      <Project>{40da447d-e22e-4c56-9491-229ff082b98c}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
